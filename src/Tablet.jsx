@@ -1,6 +1,21 @@
+import { useAuth } from "./AuthContext";
 /** Button that attempts to use the token in context when clicked */
 export default function Tablet() {
   // TODO: call authenticate when form is submitted
+  const { authenticate, setLocation } = useAuth();
+
+  async function formIsSubmitted(e) {
+    e.preventDefault();
+
+    const result = await authenticate();
+    // If authentication succeeded, move to tunnel
+    if (result?.success) {
+      setLocation("TUNNEL");
+    } else {
+      console.log(error)
+    }
+  }
+
 
   return (
     <section>
@@ -16,9 +31,10 @@ export default function Tablet() {
       <p>
         It holds out a rectangular stone tablet carved with an intricate design.
       </p>
-      <form>
+      <form onSubmit={formIsSubmitted}>
         <button>Place your palm upon the tablet.</button>
       </form>
     </section>
   );
 }
+

@@ -10,4 +10,4 @@ export default function Tunnel() {
       <p>You step into the tunnel, and your journey continues.</p>
     </section>
   );
-}
+} 
